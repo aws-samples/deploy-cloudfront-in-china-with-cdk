@@ -65,8 +65,8 @@ class CloudfrontInChinaStack(Stack):
                 ],
                 viewer_certificate=cf.CfnDistribution.ViewerCertificateProperty(
                     iam_certificate_id=server_cert_id,
-                    minimum_protocol_version="TLSv1.2_2021",
-                    ssl_support_method="sni-only"
+                    minimum_protocol_version='TLSv1.2_2021',
+                    ssl_support_method='sni-only'
                 )
             )
         )
