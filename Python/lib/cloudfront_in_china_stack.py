@@ -8,7 +8,7 @@ from aws_cdk import (
 )
 
 # Replace the value with your IAM server certificate ID.
-server_cert_id = 'YOUR_CERTIFICATE_ID'
+iam_cert_id = 'YOUR_CERTIFICATE_ID'
 
 # Replace the value with your alternate domain names for the cloudfront distribution
 cname = ['www1.example.com.cn', 'www2.example.com.cn']
@@ -58,7 +58,7 @@ class CloudfrontInChinaStack(Stack):
                     )
                 ],
                 viewer_certificate=cf.CfnDistribution.ViewerCertificateProperty(
-                    iam_certificate_id=server_cert_id,
+                    iam_certificate_id=iam_cert_id,
                     minimum_protocol_version='TLSv1.2_2021',
                     ssl_support_method='sni-only'
                 )
