@@ -6,15 +6,17 @@ CloudFront in China currently does not support ACM for managing SSL/TLS certific
 
 ### What the demo will do:
 
+![Demo Architecture](https://github.com/aws-samples/deploy-cloudfront-in-china-with-cdk/blob/main/architecture.png?raw=true)
+
 * Create an Amazon S3 bucket in AWS China (Beijing) Region
 * Create an Origin Access Identity (OAI) and grant the Amazon S3 bucket access to CloudFront with the OAI
 * Create a CloudFront distribution with a default cache behavior pointing to the Amazon S3 Origin, and an IAM server certificate association (we assume that you already have the server certificate ID)
 
-This demo provides AWS CDK code in two languages, Python and TypeScript, placed in `Python/` and `TypeScript/` directories separately.
+This demo provides AWS CDK code in Python and TypeScript, with the code for each language placed in separate `Python/` and `TypeScript/` directories.
 
 #### Deploy the demo in TypeScript
 
-Modify the value of `iamCertId` and `cname` in `lib/cloudfront_in_china_stack.py`
+Modify the value of `iamCertId` and `cname` in `TypeScript/lib/cloudfront_in_china_stack.ts`
 
 ```TypeScript
 // Replace the value with your IAM server certificate ID.
@@ -27,6 +29,7 @@ const cname = ['www1.example.com.cn', 'www2.example.com.cn'];
 Enter the `TypeScript/` directory, install the dependencies, deploy the CDK stack.
 
 ```Bash
+cd TypeScript
 npm install
 cdk synth
 cdk bootstrap aws://<YOUR_AWSCN_ACCOUNT_ID>/cn-north-1
@@ -35,7 +38,7 @@ cdk deploy
 
 #### Deploy the demo in Python
 
-Modify the value of `iam_cert_id` and `cname` in `lib/cloudfront_in_china_stack.py`
+Modify the value of `iam_cert_id` and `cname` in `Python/lib/cloudfront_in_china_stack.py`
 
 ```python
 # Replace the value with your IAM server certificate ID.
@@ -48,6 +51,9 @@ cname = ['www1.example.com.cn', 'www2.example.com.cn']
 Enter the `Python/` directory, install the dependencies, deploy the CDK stack.
 
 ```Bash
+cd Python
+python -m venv my-venv
+source my-venv/bin/activate	# On Unix or MacOS. On Windows, run "my-venv\Scripts\activate.bat" instead.
 pip install -r requirements.txt
 cdk synth
 cdk bootstrap aws://<YOUR_AWSCN_ACCOUNT_ID>/cn-north-1
