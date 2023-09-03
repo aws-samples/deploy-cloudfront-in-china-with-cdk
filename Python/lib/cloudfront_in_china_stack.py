@@ -1,4 +1,3 @@
-import boto3
 from constructs import Construct
 from aws_cdk import (
     CfnOutput,
@@ -8,17 +7,12 @@ from aws_cdk import (
     aws_s3 as s3
 )
 
+# Replace the value with your IAM server certificate ID.
+server_cert_id = 'YOUR_CERTIFICATE_ID'
 
-iam_client = boto3.client('iam')
-
-# Read the certificate id from IAM cert store
-my_cert = iam_client.get_server_certificate(
-    ServerCertificateName='example.com_01'      # Replace example.com_01 with your certificate name.
-)
-server_cert_id = my_cert['ServerCertificate']['ServerCertificateMetadata']['ServerCertificateId']
-
-# Input your alternate domain names for the cloudfront distribution here
+# Replace the value with your alternate domain names for the cloudfront distribution
 cname = ['www1.example.com.cn', 'www2.example.com.cn']
+
 
 class CloudfrontInChinaStack(Stack):
 
