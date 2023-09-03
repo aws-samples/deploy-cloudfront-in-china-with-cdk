@@ -56,7 +56,7 @@ cdk deploy
 
 ### Clean up
 
-To delete the deployed resources, run the cdk destroy command from the stack directory.
+To delete the deployed resources, run the `cdk destroy` command from the stack directory.
 
 ## Security
 
