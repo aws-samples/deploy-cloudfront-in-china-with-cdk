@@ -24,6 +24,7 @@ class CloudfrontInChinaStack(Stack):
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
             removal_policy=RemovalPolicy.DESTROY,
             auto_delete_objects=True,
+            enforce_ssl=True
         )
 
         oai = cf.OriginAccessIdentity(self, 'MyOriginAccessIdentity')

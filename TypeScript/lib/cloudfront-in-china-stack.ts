@@ -17,6 +17,7 @@ export class CloudfrontInChinaStack extends Stack {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
+      enforceSSL: true,
     });
 
     const oai = new cf.OriginAccessIdentity(this, 'MyOriginAccessIdentity');
